@@ -1,0 +1,180 @@
+// Lumina Academy - Prisma Schema
+// PostgreSQL on Neon
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  STUDENT
+  INSTRUCTOR
+}
+
+enum QuestionType {
+  MULTIPLE_CHOICE
+  TRUE_FALSE
+  OPEN_ANSWER
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(STUDENT)
+  avatar    String?
+  bio       String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  courses      Course[]       @relation("InstructorCourses")
+  purchases    Purchase[]
+  progress     UserProgress[]
+  quizAttempts QuizAttempt[]
+}
+
+model Category {
+  id      String   @id @default(cuid())
+  name    String   @unique
+  icon    String?
+  courses Course[]
+}
+
+model Course {
+  id          String   @id @default(cuid())
+  title       String
+  description String?  @db.Text
+  imageUrl    String?
+  price       Float?
+  isPublished Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  categoryId   String?
+  category     Category? @relation(fields: [categoryId], references: [id])
+  instructorId String
+  instructor   User      @relation("InstructorCourses", fields: [instructorId], references: [id])
+
+  chapters  Chapter[]
+  purchases Purchase[]
+
+  @@index([categoryId])
+  @@index([instructorId])
+}
+
+model Chapter {
+  id          String   @id @default(cuid())
+  title       String
+  description String?  @db.Text
+  position    Int
+  isPublished Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  courseId String
+  course  Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  lessons Lesson[]
+  quiz    Quiz?
+
+  @@index([courseId])
+}
+
+model Lesson {
+  id          String   @id @default(cuid())
+  title       String
+  content     String?  @db.Text
+  videoUrl    String?
+  duration    Int?
+  position    Int
+  isFree      Boolean  @default(false)
+  isPublished Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  chapterId String
+  chapter   Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+
+  progress UserProgress[]
+
+  @@index([chapterId])
+}
+
+model UserProgress {
+  id            String   @id @default(cuid())
+  isCompleted   Boolean  @default(false)
+  videoProgress Int      @default(0)
+  updatedAt     DateTime @updatedAt
+
+  userId   String
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lessonId String
+  lesson   Lesson @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, lessonId])
+  @@index([userId])
+  @@index([lessonId])
+}
+
+model Purchase {
+  id        String   @id @default(cuid())
+  price     Float
+  createdAt DateTime @default(now())
+
+  userId   String
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  courseId  String
+  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, courseId])
+  @@index([userId])
+  @@index([courseId])
+}
+
+model Quiz {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  chapterId String  @unique
+  chapter   Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+
+  questions Question[]
+  attempts  QuizAttempt[]
+}
+
+model Question {
+  id       String       @id @default(cuid())
+  text     String       @db.Text
+  type     QuestionType
+  options  Json?
+  answer   String       @db.Text
+  position Int
+
+  quizId String
+  quiz   Quiz   @relation(fields: [quizId], references: [id], onDelete: Cascade)
+
+  @@index([quizId])
+}
+
+model QuizAttempt {
+  id        String   @id @default(cuid())
+  score     Float
+  answers   Json
+  createdAt DateTime @default(now())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  quizId String
+  quiz   Quiz   @relation(fields: [quizId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([quizId])
+}

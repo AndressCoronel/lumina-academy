@@ -50,7 +50,7 @@ const featuredCourses = [
         rating: 4.9,
         students: 2847,
         lessons: 20,
-        color: "from-blue-600/20 to-blue-400/20",
+        color: "from-blue-500/20 to-indigo-500/20",
         border: "border-blue-500/20",
     },
     {
@@ -62,8 +62,8 @@ const featuredCourses = [
         rating: 4.8,
         students: 1923,
         lessons: 16,
-        color: "from-sky-500/20 to-blue-500/20",
-        border: "border-sky-500/20",
+        color: "from-emerald-500/20 to-teal-500/20",
+        border: "border-emerald-500/20",
     },
     {
         title: "Diseño UX/UI Profesional",
@@ -74,8 +74,8 @@ const featuredCourses = [
         rating: 4.9,
         students: 1556,
         lessons: 14,
-        color: "from-blue-400/20 to-sky-400/20",
-        border: "border-blue-400/20",
+        color: "from-pink-500/20 to-rose-500/20",
+        border: "border-pink-500/20",
     },
     {
         title: "Machine Learning desde Cero",
@@ -86,8 +86,8 @@ const featuredCourses = [
         rating: 4.7,
         students: 1234,
         lessons: 18,
-        color: "from-indigo-500/20 to-blue-600/20",
-        border: "border-indigo-500/20",
+        color: "from-violet-500/20 to-purple-500/20",
+        border: "border-violet-500/20",
     },
 ];
 
@@ -105,40 +105,40 @@ const features = [
         title: "AI Study Buddy",
         description:
             "Un asistente IA que responde tus dudas en tiempo real basándose en el contexto de la lección.",
-        color: "text-sky-400",
-        bg: "bg-sky-500/10",
+        color: "text-violet-400",
+        bg: "bg-violet-500/10",
     },
     {
         icon: Award,
         title: "Quizzes Interactivos",
         description:
             "Valida tu conocimiento con cuestionarios al final de cada capítulo con múltiples tipos de preguntas.",
-        color: "text-blue-300",
-        bg: "bg-blue-400/10",
+        color: "text-amber-400",
+        bg: "bg-amber-500/10",
     },
     {
         icon: BarChart3,
         title: "Dashboard de Progreso",
         description:
             "Visualiza tu avance con barras de progreso en tiempo real y estadísticas detalladas.",
-        color: "text-cyan-400",
-        bg: "bg-cyan-500/10",
+        color: "text-emerald-400",
+        bg: "bg-emerald-500/10",
     },
     {
         icon: Monitor,
         title: "Panel de Instructor",
         description:
             "Herramientas completas para crear, gestionar y analizar cursos con métricas en tiempo real.",
-        color: "text-indigo-400",
-        bg: "bg-indigo-500/10",
+        color: "text-cyan-400",
+        bg: "bg-cyan-500/10",
     },
     {
         icon: Zap,
         title: "Experiencia Premium",
         description:
             "Interfaz moderna con animaciones suaves, modo oscuro y diseño glassmorphism de última generación.",
-        color: "text-slate-300",
-        bg: "bg-slate-500/10",
+        color: "text-rose-400",
+        bg: "bg-rose-500/10",
     },
 ];
 
