@@ -10,10 +10,6 @@ Lumina Academy es una solución integral de aprendizaje en línea diseñada para
 | :---: | :---: | :---: |
 | ![Dashboard](./screenshots/dashboard.png) | ![Cursos](./screenshots/cursos.png) | ![Clase](./screenshots/clase.png) |
 
-> **Nota:** Para ver las imágenes, asegúrate de crear la carpeta `/screenshots` en tu repositorio y subir las capturas con esos nombres.
-
----
-
 ## 🚀 Características Principales
 
 * **Gestión de Cursos:** Los instructores pueden crear, editar y publicar cursos con múltiples lecciones de forma intuitiva.
