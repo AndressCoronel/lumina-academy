@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎓 Lumina Academy - Plataforma de E-Learning Full-Stack
 
-## Getting Started
+Lumina Academy es una solución integral de aprendizaje en línea diseñada para ofrecer una experiencia educativa fluida tanto para instructores como para estudiantes. Este proyecto demuestra capacidades avanzadas en manejo de flujos de usuario, contenido multimedia y arquitecturas modernas.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🖼️ Vista Previa del Proyecto
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Dashboard del Estudiante | Catálogo de Cursos | Reproductor de Clases |
+| :---: | :---: | :---: |
+| ![Dashboard](./screenshots/dashboard.png) | ![Cursos](./screenshots/cursos.png) | ![Clase](./screenshots/clase.png) |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+> **Nota:** Para ver las imágenes, asegúrate de crear la carpeta `/screenshots` en tu repositorio y subir las capturas con esos nombres.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🚀 Características Principales
 
-To learn more about Next.js, take a look at the following resources:
+* **Gestión de Cursos:** Los instructores pueden crear, editar y publicar cursos con múltiples lecciones de forma intuitiva.
+* **Streaming de Video:** Integración optimizada para la visualización de clases en video sin interrupciones.
+* **Pasarela de Pagos:** Sistema de inscripciones configurado para el acceso a contenido premium (ideal para monetizar contenido).
+* **Panel de Estudiante:** Seguimiento del progreso en tiempo real, acceso a materiales descargables y gestión de perfil personal.
+* **Diseño Responsivo:** Interfaz 100% adaptable a dispositivos móviles, tablets y computadoras de escritorio.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ Stack Tecnológico
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* **Frontend:** Next.js (App Router), TypeScript, Tailwind CSS para estilos modernos.
+* **Backend:** Node.js con API Routes integradas en Next.js.
+* **Base de Datos:** PostgreSQL gestionado con Prisma ORM para consultas eficientes y seguras.
+* **Despliegue:** Optimizado para Vercel.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📐 Valor Agregado (Freelance Focus)
+Este proyecto no es solo código; es un producto funcional que resuelve problemas de:
+1.  **Escalabilidad:** Preparado para recibir cientos de cursos y miles de alumnos.
+2.  **SEO:** Renderizado del lado del servidor (SSR) para que los cursos aparezcan en buscadores.
+3.  **Seguridad:** Validación estricta de datos y manejo seguro de sesiones de usuario.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+<details>
+  <summary>🛠️ <b>Instrucciones de Instalación (Para Desarrolladores)</b></summary>
+
+### Pasos para configurar el entorno local:
+
+1.  **Clonar el repositorio:**
+    ```bash
+    git clone [https://github.com/AndressCoronel/lumina-academy.git](https://github.com/AndressCoronel/lumina-academy.git)
+    cd lumina-academy
+    ```
+
+2.  **Instalar dependencias:**
+    ```bash
+    npm install
+    ```
+
+3.  **Configurar variables de entorno:**
+    Crea un archivo `.env` en la raíz del proyecto y añade tus credenciales:
+    ```env
+    DATABASE_URL="tu_url_de_postgresql"
+    # Añade aquí tus claves de Auth y Cloudinary/Mux si aplica
+    ```
+
+4.  **Base de Datos (Prisma):**
+    ```bash
+    npx prisma generate
+    npx prisma db push
+    ```
+
+5.  **Iniciar modo desarrollo:**
+    ```bash
+    npm run dev
+    ```
+</details>
+
+---
+Desarrollado por **[Andres Coronel](https://github.com/AndressCoronel)** *Disponible para proyectos freelance y colaboraciones de desarrollo web.*
